@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import { GiHamburgerMenu } from "react-icons/gi";
 const Navbar: React.FC = () => {
-    return <div className='flex flex-row justify-between shadow-lg items-center w-full p-3 px-8'>
+    return <div className='flex fixed top-0 bg-white z-10 flex-row justify-between shadow-lg items-center w-full p-3 px-8'>
         <div>
             <Image src={'/logo.svg'} width={96} height={24} alt="" />
         </div>

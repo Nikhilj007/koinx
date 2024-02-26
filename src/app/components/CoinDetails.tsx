@@ -9,7 +9,7 @@ import { GoTriangleUp } from "react-icons/go";
 import { GoTriangleDown } from "react-icons/go";
 
 const CoinDetails = () => {
-    const server = "https://api.coingecko.com/api/v";
+    const server = "https://api.coingecko.com/api/v3";
     const [coin, setCoin] = useState<any>({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -105,8 +105,8 @@ const CoinDetails = () => {
                                 height={36}
                                 alt='coin image'
                             />
-                            <div className='text-lg font-bold'>{coin.name} Bitcoin</div>
-                            <div>{currencySymbol} btc</div>
+                            <div className='text-lg font-bold'>{coin.name}</div>
+                            <div>{coin?.symbol?.toUpperCase()}</div>
                             <div className='bg-gray-500 px-3 py-1 text-white rounded-lg'>{`Rank #${coin.market_cap_rank}`}</div>
                         </div>
 
@@ -116,7 +116,7 @@ const CoinDetails = () => {
                 </div>
                 <div className='mt-4 pb-3'>
                     <div className='flex gap-2 my-6 items-start'>
-                        <div className='font-semibold text-2xl'>${coin?.market_data?.current_price[currency]}65464</div>
+                        <div className='font-semibold text-2xl'>${coin?.market_data?.current_price[currency]}</div>
                         <div className={`${coin.market_data?.price_change_24h > 0 ? 'bg-green-100' : 'bg-red-100 '} px-1 rounded-md  ml-4`}>
                             {coin.market_data?.price_change_24h > 0 ? <span className=' text-green-600'><GoTriangleUp className='inline text-xl' />{coin?.market_data?.price_change_24h} % </span> : <span className=' text-red-600 w-full'><GoTriangleDown className='inline text-xl' />{coin?.market_data?.price_change_24h} %</span>}
                         </div>
@@ -127,6 +127,7 @@ const CoinDetails = () => {
                         <div className='flex gap-3'>
                             {btns.map((i) => (
                                 <button type='button'
+                                    className={`px-1 rounded-full ${days === i ? 'bg-blue-100 text-blue-600' : 'bg-gray-200 text-gray-500'}`}
                                     disabled={days === i}
                                     key={i}
                                     onClick={() => switchChartStats(i)}
