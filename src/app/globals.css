@@ -20,3 +20,6 @@ body{
   margin-top: 4rem;
 }
 
+.shide::-webkit-scrollbar{
+  display: none;
+}

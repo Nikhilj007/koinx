@@ -94,7 +94,7 @@ const CoinDetails = () => {
     }, [params.id, currency, days]);
 
     return <div>
-        {loading ? <>Loading</> : (
+        {loading ? <div className='h-5/6 flex justify-center items-center'>Loading</div> : (
             <div className='p-8 col-span-2 bg-white'>
                 <div>
                     <div className='flex justify-between items-center'>

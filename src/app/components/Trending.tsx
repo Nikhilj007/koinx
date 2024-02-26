@@ -24,7 +24,7 @@ function Trending() {
         <div className="bg-white mt-3 p-4 rounded-md">
             <h1 className="text-lg font-semibold py-2">Trending Coins (24H)</h1>
             {trending?.coins?.slice(0, 3).map((coin: any, index: number) => (
-                <div className="flex justify-between" key={index}>
+                <div className="flex justify-between py-2" key={index}>
                     <div className="flex gap-2">
                         <img src={coin?.item?.small} width={24} height={24} alt="" />
                         <div>{coin?.item?.name}</div>
