@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useState } from "react";
-
+import { useRouter } from "next/router";
 function MayLike({like}: {like:boolean}) {
     const [trending, setTrending] = useState<any>();
-
     useEffect(() => {
         async function fetchData() {
             try {
@@ -26,7 +25,7 @@ function MayLike({like}: {like:boolean}) {
             <div className="flex overflow-x-scroll shide gap-10 sm:mx-12">
                 {trending?.coins?.map((coin: any, index: number) => {
                     return (
-                            <div key={index} className=" min-w-64 border rounded-md ">
+                            <div onClick={()=>{null}} key={index} className=" min-w-64 border rounded-md p-4">
                                 <div className="flex gap-1">
                                     <img
                                         className="rounded-full"

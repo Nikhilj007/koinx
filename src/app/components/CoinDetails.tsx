@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import axios from 'axios';
 import Chart from './Chart';
 import { useParams } from 'next/navigation';
@@ -16,7 +16,7 @@ const CoinDetails = () => {
     const [currency, setCurrency] = useState("usd");
     const [days, setDays] = useState("24H");
     const [chartArray, setChartArray] = useState([]);
-
+    const coina = useParams().id?.toString() || "bitcoin";
     const currencySymbol =
         currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
 
@@ -74,11 +74,11 @@ const CoinDetails = () => {
         const fetchCoin = async () => {
             try {
                 const { data } = await axios.get(
-                    `${server}/coins/${'bitcoin'}`
+                    `${server}/coins/${coina}`
                 );
 
                 const { data: chartData } = await axios.get(
-                    `${server}/coins/${'bitcoin'}/market_chart?vs_currency=${currency}&days=${days}`
+                    `${server}/coins/${coina}/market_chart?vs_currency=${currency}&days=${days}`
                 );
 
                 setCoin(data);
