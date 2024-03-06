@@ -21,8 +21,8 @@ function MayLike({like}: {like:boolean}) {
     return ( 
     <>
         <div className="sm:my-14">
-            <div className="text-2xl sm:px-10 sm:py-1 py-3 font-semibold">{like?'You May Also Like':'Trending'} </div>
-            <div className="flex overflow-x-scroll shide gap-10 sm:mx-12">
+            <div className="text-2xl sm:px-10 sm:py-1 py-3 px-2 font-semibold">{like?'You May Also Like':'Trending'} </div>
+            <div className="flex overflow-x-scroll snap-x snap-mandatory snap-center shide gap-10 sm:mx-12" style={{ scrollSnapType: 'x mandatory' }}>
                 {trending?.coins?.map((coin: any, index: number) => {
                     return (
                             <div onClick={()=>{null}} key={index} className=" min-w-64 border rounded-md p-4">

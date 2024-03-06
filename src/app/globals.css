@@ -16,6 +16,14 @@
   }
 }
 
+img{
+  pointer-events: none;
+  -moz-user-select: none; /* Firefox */
+  -webkit-user-select: none; /* Chrome, Safari, Opera */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
 body{
   margin-top: 4rem;
 }

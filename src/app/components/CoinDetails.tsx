@@ -14,14 +14,14 @@ const CoinDetails = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const [currency, setCurrency] = useState("usd");
-    const [days, setDays] = useState("24H");
+    const [days, setDays] = useState("30");
     const [chartArray, setChartArray] = useState([]);
     const coina = useParams().id?.toString() || "bitcoin";
     const currencySymbol =
         currency === "inr" ? "₹" : currency === "eur" ? "€" : "$";
 
 
-    const btns = ["24h", "7d", "14d", "30d", "60d", "200d", "1y", "All"];
+    const btns = [ "7d", "14d", "30d", "60d", "200d", "1y", "All"];
 
     const switchChartStats = (key: string) => {
         switch (key) {
@@ -78,7 +78,7 @@ const CoinDetails = () => {
                 );
 
                 const { data: chartData } = await axios.get(
-                    `${server}/coins/${coina}/market_chart?vs_currency=${currency}&days=${days}`
+                    `${server}/coins/${coina}/market_chart?vs_currency=${currency}&days=${days}&interval=daily`
                 );
 
                 setCoin(data);
@@ -94,8 +94,8 @@ const CoinDetails = () => {
     }, [params.id, currency, days]);
 
     return <div>
-        {loading ? <div className='h-5/6 flex justify-center items-center'>Loading</div> : (
-            <div className='p-8 col-span-2 bg-white'>
+        {loading ? <div className='h-screen flex justify-center items-center'>Loading</div> : (
+            <div className='sm:p-8 col-span-2 bg-white'>
                 <div>
                     <div className='flex justify-between items-center'>
                         <div className='flex gap-3'>
@@ -122,12 +122,12 @@ const CoinDetails = () => {
                         </div>
                         <div className='text-gray-500 text-sm'>(24H)</div>
                     </div>
-                    <div className='sm:flex justify-between pt-3 text-sm border-t-2'>
+                    <div className='md:flex justify-between pt-3 text-sm border-t-2'>
                         <div className='text-lg font-semibold'>Bitcoin price chart (usd)</div>
                         <div className='flex gap-3'>
                             {btns.map((i) => (
                                 <button type='button'
-                                    className={`px-1 rounded-full ${days === i ? 'bg-blue-100 text-blue-600' : 'bg-gray-200 text-gray-500'}`}
+                                    className={`px-1 rounded-full ${days == i ? 'bg-blue-100 text-blue-600' : 'bg-gray-200 text-gray-500'}`}
                                     disabled={days === i}
                                     key={i}
                                     onClick={() => switchChartStats(i)}
