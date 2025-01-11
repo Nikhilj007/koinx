@@ -26,7 +26,6 @@ export default function Chart({ arr = [], currency, days }: { arr: any[], curren
   useEffect(() => {
     const initialData = arr.map((item: any) => {
       const date = new Date(item[0]).toISOString().split('T')[0];
-      console.log(date);
       return {
         time: date,
         value: item[1],
@@ -35,7 +34,6 @@ export default function Chart({ arr = [], currency, days }: { arr: any[], curren
     );
     // remove duplicate time in initialData
     const unique = initialData.filter((v, i, a) => a.findIndex(t => (t.time === v.time)) === i);
-    console.log(initialData);
     const chart = createChart(chartContainerRef.current as HTMLDivElement, {
       layout: {
         background: { type: ColorType.Solid, color: "#ffffff" },
@@ -54,7 +52,7 @@ export default function Chart({ arr = [], currency, days }: { arr: any[], curren
       lineColor: "#0052FE",
       topColor: "#5a8efd",
       bottomColor: "#ffffff",
-      lineWidth: 2,
+      lineWidth: 1,
     });
     chart.timeScale().fitContent();
     chart.timeScale().applyOptions({

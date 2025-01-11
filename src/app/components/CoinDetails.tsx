@@ -83,7 +83,7 @@ const CoinDetails = () => {
 
                 setCoin(data);
                 setChartArray(chartData.prices);
-                console.log(chartData.Prices + "!")
+                console.log('data', data);
                 setLoading(false);
             } catch (error) {
                 setError(true);
@@ -94,7 +94,7 @@ const CoinDetails = () => {
     }, [params.id, currency, days]);
 
     return <div>
-        {loading ? <div className='h-screen flex justify-center items-center'>Loading</div> : (
+        {loading ? <div className='h-screen flex justify-center titems-center'>Loading</div> : (
             <div className='sm:p-8 col-span-2 bg-white'>
                 <div>
                     <div className='flex justify-between items-center'>
@@ -117,8 +117,8 @@ const CoinDetails = () => {
                 <div className='mt-4 pb-3'>
                     <div className='flex gap-2 my-6 items-start'>
                         <div className='font-semibold text-2xl'>${coin?.market_data?.current_price[currency]}</div>
-                        <div className={`${coin.market_data?.price_change_24h > 0 ? 'bg-green-100' : 'bg-red-100 '} px-1 rounded-md  ml-4`}>
-                            {coin.market_data?.price_change_24h > 0 ? <span className=' text-green-600'><GoTriangleUp className='inline text-xl' />{coin?.market_data?.price_change_24h} % </span> : <span className=' text-red-600 w-full'><GoTriangleDown className='inline text-xl' />{coin?.market_data?.price_change_24h} %</span>}
+                        <div className={`${coin.market_data?.price_change_percentage_24h > 0 ? 'bg-green-100' : 'bg-red-100 '} px-1 rounded-md  ml-4`}>
+                            {coin.market_data?.price_change_percentage_24h > 0 ? <span className=' text-green-600'><GoTriangleUp className='inline text-xl' />{coin?.market_data?.price_change_percentage_24h} % </span> : <span className=' text-red-600 w-full'><GoTriangleDown className='inline text-xl' />{coin?.market_data?.price_change_percentage_24h} %</span>}
                         </div>
                         <div className='text-gray-500 text-sm'>(24H)</div>
                     </div>
